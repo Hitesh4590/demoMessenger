@@ -27,39 +27,44 @@ class HomeScreen extends ConsumerWidget {
         ],
       ),
       body: Column(mainAxisSize: MainAxisSize.max),
-      bottomNavigationBar: Card(
-        elevation: 12,
-        child: SizedBox(
+      bottomNavigationBar: Card(elevation: 200,
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12)
+          ),
           width: double.infinity,
-          height: 100,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _navItems(
-                width: width,
-                icon: Icons.chat,
-                color: Colors.transparent,
-                text: "Chat",
-              ),
-              _navItems(
-                width: width,
-                icon: Icons.chat,
-                color: Colors.transparent,
-                text: "Chat",
-              ),
-              _navItems(
-                width: width,
-                icon: Icons.chat,
-                color: Colors.transparent,
-                text: "Chat",
-              ),
-              _navItems(
-                width: width,
-                icon: Icons.chat,
-                color: Colors.blue,
-                text: "Chat",
-              ),
-            ],
+          height: 150,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _navItems(
+                  width: width,
+                  icon: Icons.chat,
+                  color: Colors.transparent,
+                  text: "Chat",
+                ),
+                _navItems(
+                  width: width,
+                  icon: Icons.chat,
+                  color: Colors.transparent,
+                  text: "Chat",
+                ),
+                _navItems(
+                  width: width,
+                  icon: Icons.chat,
+                  color: Colors.transparent,
+                  text: "Chat",
+                ),
+                _navItems(
+                  width: width,
+                  icon: Icons.chat,
+                  color: Colors.blue,
+                  text: "Chat",
+                ),
+              ],
+            ),
           ),
         ),
       ),
