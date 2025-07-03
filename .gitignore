@@ -5,41 +5,132 @@
 *.swp
 .DS_Store
 .atom/
-.build/
 .buildlog/
+*.orig
 .history
 .svn/
-.swiftpm/
 migrate_working_dir/
+.env
 
-# IntelliJ related
+# IntelliJ and Android Studio
 *.iml
-*.ipr
-*.iws
 .idea/
+*.iws
+*.ipr
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
+**/doc/api/
 
-# The .vscode folder contains launch configuration and tasks you configure in
-# VS Code which you may wish to be included in version control, so this line
-# is commented out by default.
+
+# VS Code (commented out to allow inclusion if needed)
 #.vscode/
 
-# Flutter/Dart/Pub related
-**/doc/api/
-**/ios/Flutter/.last_build_id
+# Flutter/Dart/Pub
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
+.fvm/
 .pub-cache/
 .pub/
-/build/
+build/
+coverage/
+lib/generated_plugin_registrant.dart
+# Uncomment the next line for library packages to exclude pubspec.lock
+#pubspec.lock
 
-# Symbolication related
+# Android
+/android/.gradle/
+/android/app/debug/
+/android/app/profile/
+/android/app/release/
+*.apk
+*.aab
+*.dex
+local.properties
+key.properties
+google-services.json
+*.hprof
+*.jks
+*.keystore
+.externalNativeBuild/
+.cxx/
+gen-external-apklibs/
+output.json
+
+# iOS
+**/ios/**/*.mode1v3
+**/ios/**/*.mode2v3
+**/ios/**/*.moved-aside
+**/ios/**/*.pbxuser
+**/ios/**/*.perspectivev3
+**/ios/**/*sync/
+**/ios/**/.sconsign.dblite
+**/ios/**/.tags*
+**/ios/**/.vagrant/
+**/ios/**/DerivedData/
+**/ios/**/Icon?
+**/ios/**/Pods/
+**/ios/**/.symlinks/
+**/ios/**/profile
+**/ios/**/xcuserdata/
+**/ios/.generated/
+**/ios/Flutter/.last_build_id
+**/ios/Flutter/App.framework
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/app.flx
+**/ios/Flutter/app.zip
+**/ios/Flutter/flutter_assets/
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/ServiceDefinitions.json
+**/ios/Runner/GeneratedPluginRegistrant.*
+
+# Web
+/web/build/
+/web/*.map
+/web/*.js
+/web/*.html
+/web/*.css
+/web/flutter_service_worker.js
+/web/assets/**/AssetManifest.json
+/web/assets/**/FontManifest.json
+/web/assets/**/manifest.json
+
+# Symbolication and Obfuscation
 app.*.symbols
-
-# Obfuscation related
 app.*.map.json
 
-# Android Studio will place build artifacts here
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Xcode
+xcuserdata/
+*.xcscmblueprint
+*.xccheckout
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+DerivedData/
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Packages/
+Package.resolved
+
+# Fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Code Injection
+iOSInjectionProject/
+
+# Exceptions
+!**/ios/**/default.mode1v3
+!**/ios/**/default.mode2v3
+!**/ios/**/default.pbxuser
+!**/ios/**/default.perspectivev3
+!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+!/gradle/wrapper/gradle-wrapper.jar
