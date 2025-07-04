@@ -38,6 +38,10 @@ dependencies:
   firebase_auth: ^5.6.1
   flutter_riverpod: ^2.6.1
   shared_preferences: ^2.5.3
+  image_picker: ^1.1.0
+  cloud_firestore: ^5.6.11
+  firebase_storage: ^12.4.9
+  cloudinary_public: ^0.23.1
   riverpod_annotation: ^2.6.1
   local_auth: ^2.3.0
 
@@ -66,7 +70,6 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-    - assets/icons/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
