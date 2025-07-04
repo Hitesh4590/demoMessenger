@@ -1,4 +1,4 @@
-import 'package:demo_messenger/screens/splash/splash_screen.dart';
+import 'package:demo_messenger/utils/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,9 +25,19 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        primaryColor: Colors.blue,
+        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
       ),
-      home: const SplashScreen()
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+      ),
+      themeMode: ThemeMode.light,
+      initialRoute: AppRoute.splashScreen.path,
+      routes: appRoutes,
     );
   }
 }
