@@ -1,3 +1,4 @@
+import 'package:demo_messenger/utils/shared_prefs_helper.dart';
 import 'package:demo_messenger/widgets/custom_text_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +13,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 }
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
-  final _formKey = GlobalKey<FormState>();
+  // final _formKey = GlobalKey<FormState>();
   final _emailFocusNode = FocusNode();
   final _passwordFocusNode = FocusNode();
   final _emailController = TextEditingController();
@@ -25,6 +26,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void _handleLogin() async {
+    await SharedPrefsHelper.setFirstLogin(false);
   }
 
   @override
@@ -86,7 +91,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: _handleLogin,
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         shape: RoundedRectangleBorder(

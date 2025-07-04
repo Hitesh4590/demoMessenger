@@ -1,4 +1,4 @@
-import 'package:demo_messenger/screens/splash/splash_screen.dart';
+import 'package:demo_messenger/utils/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       themeMode: ThemeMode.light,
-      home: const SplashScreen(),
+      initialRoute: AppRoute.splashScreen.path,
+      routes: appRoutes,
     );
   }
 }
