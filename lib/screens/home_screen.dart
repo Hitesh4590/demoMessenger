@@ -14,7 +14,7 @@ class HomeScreen extends ConsumerWidget {
   final List<Widget> _screens = [
     ChatListScreen(),
     GroupChatListScreen(),
-    ChatScreen(),
+    SettingsScreen(),
     SettingsScreen(),
   ];
 
