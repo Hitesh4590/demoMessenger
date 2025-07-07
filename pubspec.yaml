@@ -44,6 +44,8 @@ dependencies:
   cloudinary_public: ^0.23.1
   riverpod_annotation: ^2.6.1
   local_auth: ^2.3.0
+  flutter_svg: ^2.2.0
+  flutter_animate: ^4.5.0
 
 dev_dependencies:
   flutter_test:
