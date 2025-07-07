@@ -5,9 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:demo_messenger/widgets/gender_widget.dart';
 import 'package:demo_messenger/services/register_service.dart';
 import 'package:demo_messenger/models/register_model.dart';
-import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import '../../widgets/curved_bottom_container_widget.dart';
 
 class RegistrationScreen extends ConsumerStatefulWidget {
@@ -66,6 +64,7 @@ class _RegistrationScreenState extends ConsumerState<RegistrationScreen> {
     phoneNumberController.addListener(_updateCompletionProgress);
   }
 
+  @override
   void dispose() {
     usernameController.dispose();
     emailController.dispose();
@@ -477,7 +476,7 @@ class _RegistrationScreenState extends ConsumerState<RegistrationScreen> {
             ),
             if (_isLoading)
               Container(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withValues(alpha: 0.5),
                 child: const Center(
                   child: CircularProgressIndicator(),
                 ),

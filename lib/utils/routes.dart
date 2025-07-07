@@ -1,3 +1,4 @@
+import 'package:demo_messenger/screens/chat/chat_screen.dart';
 import 'package:demo_messenger/screens/login/login_screen.dart';
 import 'package:demo_messenger/screens/login/unlock_view.dart';
 import 'package:demo_messenger/screens/registration/registration_screen.dart';
@@ -13,12 +14,19 @@ enum AppRoute {
   login('/login'),
   unlockView('/unlock'),
   splashScreen('/splash'),
-  register('/register');
+  register('/register'),
+  chatScreen('/chatScreen');
 
   final String path;
   const AppRoute(this.path);
 }
 
+// Manually set user IDs for testing on two devices
+const bool isDevice1 = false; // Set to false for the second device
+const String user1Id = 'user1';
+const String user2Id = 'user2';
+final String currentUserId = isDevice1 ? user1Id : user2Id;
+final String receiverId = isDevice1 ? user2Id : user1Id;
 // Define named routes for the app
 Map<String, WidgetBuilder> appRoutes = {
   AppRoute.home.path: (context) => Placeholder(),
@@ -28,6 +36,7 @@ Map<String, WidgetBuilder> appRoutes = {
   AppRoute.unlockView.path: (context) => UnlockView(),
   AppRoute.splashScreen.path: (context) => SplashScreen(),
   AppRoute.register.path: (context) => RegistrationScreen(),
+  AppRoute.chatScreen.path: (context) => ChatScreen(currentUserId: currentUserId, receiverId: receiverId),
 };
 
 // Navigation helper functions
