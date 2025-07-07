@@ -56,8 +56,14 @@ class CustomTextForm extends StatelessWidget {
               // Call onSubmitted when Next/Done is pressed
               decoration: InputDecoration(
                 labelText: labelText,
+                labelStyle: TextStyle(
+                  color: theme.primaryColor, // Set label text color
+                ),
                 hintText: hintText,
-                prefixIcon: Icon(icon),
+                hintStyle: TextStyle(
+                  color: theme.hintColor, // Set hint text color
+                ),
+                prefixIcon: Icon(icon, color: theme.primaryColor),
                 suffixIcon: obscureText
                     ? IconButton(
                         icon: Icon(
@@ -78,9 +84,17 @@ class CustomTextForm extends StatelessWidget {
                     : null,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: theme.primaryColor, width: 1.0),
                 ),
-                filled: true,
-                fillColor: theme.colorScheme.surfaceContainer,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: theme.primaryColor, width: 1.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: theme.primaryColor, width: 2.0),
+                ),
+                filled: false,
               ),
               obscureText: obscureText ? isObscured : false,
               keyboardType: keyboardType,
