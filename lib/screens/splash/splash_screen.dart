@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:demo_messenger/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import '../registration/registration_screen.dart';
 
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => RegistrationScreen()),
+        MaterialPageRoute(builder: (context) => ProfileScreen()),
       );
     });
   }
