@@ -1,3 +1,5 @@
+
+import 'package:demo_messenger/utils/routes.dart';
 import 'package:demo_messenger/providers/theme_provider.dart';
 import 'package:demo_messenger/screens/home_screen.dart';
 
@@ -26,11 +28,21 @@ class MyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeModeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: AppThemes.lightTheme,
-      darkTheme: AppThemes.darkTheme,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primaryColor: Colors.blue,
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.blue,
+          brightness: Brightness.dark,
+        ),
+      ),
+      initialRoute: AppRoute.splashScreen.path,
+      routes: appRoutes,
       themeMode: themeMode,
-      home:  HomeScreen()
-
     );
   }
 }
