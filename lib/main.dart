@@ -1,33 +1,42 @@
+import 'package:demo_messenger/screens/chat/chat_screen.dart';
 import 'package:demo_messenger/screens/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'firebase_options.dart';
 
 Future<void> main() async {
-  // Ensure Flutter bindings are initialized before Firebase
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  runApp(const ProviderScope(child: MyApp()));
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  } catch (e) {
+    print('Firebase initialization error: $e');
+  }
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // Manually set user IDs for testing on two devices
+    const bool isDevice1 = false; // Set to false for the second device
+    const String user1Id = 'user1';
+    const String user2Id = 'user2';
+    final String currentUserId = isDevice1 ? user1Id : user2Id;
+    final String receiverId = isDevice1 ? user2Id : user1Id;
+
     return MaterialApp(
+      title: 'Chat Messenger',
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
-      home: const SplashScreen()
+      home: ChatScreen(currentUserId: currentUserId, receiverId: receiverId),
     );
   }
 }
