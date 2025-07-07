@@ -1,39 +1,67 @@
+import 'package:demo_messenger/screens/chat/chat_screen.dart';
+import 'package:demo_messenger/screens/chat_list/chat_list_screen.dart';
+import 'package:demo_messenger/screens/chat_list/group_chat_list_screen.dart';
+import 'package:demo_messenger/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../providers/home_provider.dart';
 
 class HomeScreen extends ConsumerWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final List<Widget> _screens = [
+    ChatListScreen(),
+    GroupChatListScreen(),
+    ChatScreen(),
+    SettingsScreen(),
+  ];
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final selectedIndex = ref.watch(selectedNavIndexProvider);
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Icon(Icons.message), // Smaller icon
-            SizedBox(width: 2), // Smaller spacing
-            Text(
-              "E-Chat", // Smaller text
+            SvgPicture.asset("assets/icons/Logo.svg"),
+            const SizedBox(width: 2),
+            const Text(
+              "E-Chat",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ],
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.search, size: 32)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.add, size: 32)),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.search, size: 32),
+            color: Colors.white,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.add, size: 32),
+            color: Colors.white,
+          ),
         ],
       ),
-      body: Column(mainAxisSize: MainAxisSize.max),
-      bottomNavigationBar: Card(elevation: 200,
+      body: _screens[selectedIndex],
+      bottomNavigationBar: Card(
+        elevation: 200,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12)
+            borderRadius: BorderRadius.circular(12),
+            color: Theme.of(context).colorScheme.surface,
           ),
           width: double.infinity,
-          height: 150,
+          height: 120,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
@@ -41,27 +69,31 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 _navItems(
                   width: width,
-                  icon: Icons.chat,
-                  color: Colors.transparent,
+                  icon: "assets/icons/chat_logo.svg",
                   text: "Chat",
+                  index: 0,
+                  ref: ref,
                 ),
                 _navItems(
                   width: width,
-                  icon: Icons.chat,
-                  color: Colors.transparent,
-                  text: "Chat",
+                  icon: "assets/icons/group_logo.svg",
+                  text: "Group",
+                  index: 1,
+                  ref: ref,
                 ),
                 _navItems(
                   width: width,
-                  icon: Icons.chat,
-                  color: Colors.transparent,
-                  text: "Chat",
+                  icon: "assets/icons/profile_logo.svg",
+                  text: "Profile",
+                  index: 2,
+                  ref: ref,
                 ),
                 _navItems(
                   width: width,
-                  icon: Icons.chat,
-                  color: Colors.blue,
-                  text: "Chat",
+                  icon: "assets/icons/hamburger_logo.svg",
+                  text: "More",
+                  index: 3,
+                  ref: ref,
                 ),
               ],
             ),
@@ -70,39 +102,58 @@ class HomeScreen extends ConsumerWidget {
       ),
     );
   }
-}
 
-Widget _navItems({
-  required IconData icon,
-  required Color color,
-  required String text,
-  required double width,
-}) {
-  return Container(
-    decoration: BoxDecoration(
-      color: color,
-      borderRadius: BorderRadius.circular(12),
-    ),
-    height: 60,
-    width: width / 8,
-    child: Column(
-      children: [
-        SizedBox(height: 8),
-        Icon(
-          icon,
-          color: color != Colors.transparent ? Colors.white : Colors.black,
+  Widget _navItems({
+    required String icon,
+    required String text,
+    required double width,
+    required int index,
+    required WidgetRef ref,
+  }) {
+    final selectedIndex = ref.watch(selectedNavIndexProvider);
+    final isSelected = selectedIndex == index;
+
+    return GestureDetector(
+      onTap: () {
+        ref.read(selectedNavIndexProvider.notifier).state = index;
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: isSelected
+              ? const LinearGradient(
+                  colors: [Colors.blue, Colors.lightBlueAccent],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
+          color: isSelected ? null : Colors.transparent,
+          borderRadius: BorderRadius.circular(12),
         ),
-        SizedBox(height: 8),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 10,
-              color: color != Colors.transparent ? Colors.white : Colors.black,
+        height: 70,
+        width: 76,
+        child: Column(
+          children: [
+            const SizedBox(height: 12),
+            Center(
+              child: SvgPicture.asset(
+                icon,
+
+                color: isSelected ? Colors.white : Colors.black,
+              ),
             ),
-          ),
+            const SizedBox(height: 4),
+            Center(
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: isSelected ? Colors.white : Colors.black,
+                ),
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      ),
+    );
+  }
 }
