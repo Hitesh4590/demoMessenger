@@ -123,7 +123,7 @@ class AppThemes {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFF87CEEB),
+        backgroundColor: Colors.lightBlue,
         foregroundColor: Colors.black,
       ),
     ),

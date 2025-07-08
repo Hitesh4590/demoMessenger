@@ -26,7 +26,7 @@ class RegisterService {
     }
   }
 
-  Future<String?> _uploadProfileImage(String userId, String? imagePath) async {
+  Future<String?> uploadProfileImage(String userId, String? imagePath) async {
     if (imagePath == null || imagePath.isEmpty) {
       print('No profile image path provided');
       return null;
@@ -71,7 +71,7 @@ class RegisterService {
         password: password.trim(),
       );
 
-      final profileImageUrl = await _uploadProfileImage(userCredential.user!.uid, imagePath);
+      final profileImageUrl = await uploadProfileImage(userCredential.user!.uid, imagePath);
 
       await _firestore.collection('users').doc(userCredential.user!.uid).set({
         'username': user.username.trim(),

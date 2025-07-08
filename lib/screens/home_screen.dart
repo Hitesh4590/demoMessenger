@@ -1,6 +1,7 @@
 import 'package:demo_messenger/screens/chat/chat_screen.dart';
 import 'package:demo_messenger/screens/chat_list/chat_list_screen.dart';
 import 'package:demo_messenger/screens/chat_list/group_chat_list_screen.dart';
+import 'package:demo_messenger/screens/profile/profile_screen.dart';
 import 'package:demo_messenger/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
   final List<Widget> _screens = [
     ChatListScreen(),
     GroupChatListScreen(),
-    SettingsScreen(),
+    ProfileScreen(),
     SettingsScreen(),
   ];
 

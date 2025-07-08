@@ -3,9 +3,12 @@ import 'package:demo_messenger/screens/chat/chat_screen.dart';
 import 'package:demo_messenger/screens/home_screen.dart';
 import 'package:demo_messenger/screens/login/login_screen.dart';
 import 'package:demo_messenger/screens/login/unlock_view.dart';
+import 'package:demo_messenger/screens/profile/profile_screen.dart';
 import 'package:demo_messenger/screens/registration/registration_screen.dart';
+import 'package:demo_messenger/screens/settings_screen.dart';
 import 'package:demo_messenger/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+
 
 
 // Enum for route names
@@ -19,6 +22,7 @@ enum AppRoute {
   register('/register'),
   chatScreen('/chatScreen'),
   chatProfileScreen('/chatProfileScreen');
+  profileScreen('/profile');
 
   final String path;
   const AppRoute(this.path);
@@ -34,13 +38,14 @@ final String receiverId = isDevice1 ? user2Id : user1Id;
 Map<String, WidgetBuilder> appRoutes = {
   AppRoute.home.path: (context) => HomeScreen(),
   AppRoute.details.path: (context) => Placeholder(),
-  AppRoute.settings.path: (context) => Placeholder(),
+  AppRoute.settings.path: (context) => SettingsScreen(),
   AppRoute.login.path: (context) => LoginScreen(),
   AppRoute.unlockView.path: (context) => UnlockView(),
   AppRoute.splashScreen.path: (context) => SplashScreen(),
   AppRoute.register.path: (context) => RegistrationScreen(),
   AppRoute.chatScreen.path: (context) => ChatScreen(currentUserId: currentUserId, receiverId: receiverId),
   AppRoute.chatProfileScreen.path: (context) => ChatProfileScreen(),
+  AppRoute.profileScreen.path: (context) => ProfileScreen(),
 };
 
 // Navigation helper functions

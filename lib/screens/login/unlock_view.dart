@@ -57,7 +57,7 @@ class _UnlockViewState extends ConsumerState<UnlockView> {
       );
 
       if (authenticated && mounted) {
-        navigateAndReplace(context, AppRoute.register);
+        navigateAndReplace(context, AppRoute.home);
       }
     } catch (e) {
       ref.read(authStateProvider.notifier).state = AuthState(
