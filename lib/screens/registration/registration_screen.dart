@@ -1,3 +1,4 @@
+import 'package:demo_messenger/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_messenger/widgets/custom_text_form.dart';
 import 'package:demo_messenger/widgets/profileavatar_widget.dart';
@@ -135,7 +136,7 @@ class _RegistrationScreenState extends ConsumerState<RegistrationScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Registered successfully')),
           );
-          // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => TestScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfileScreen()));
         }
       } catch (e) {
         if (mounted) {
