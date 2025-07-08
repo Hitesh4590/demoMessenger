@@ -1,3 +1,4 @@
+import 'package:demo_messenger/screens/chat/chat_profile_screen.dart';
 import 'package:demo_messenger/screens/chat/chat_screen.dart';
 import 'package:demo_messenger/screens/home_screen.dart';
 import 'package:demo_messenger/screens/login/login_screen.dart';
@@ -20,8 +21,8 @@ enum AppRoute {
   splashScreen('/splash'),
   register('/register'),
   chatScreen('/chatScreen'),
+  chatProfileScreen('/chatProfileScreen');
   profileScreen('/profile');
-
 
   final String path;
   const AppRoute(this.path);
@@ -43,6 +44,7 @@ Map<String, WidgetBuilder> appRoutes = {
   AppRoute.splashScreen.path: (context) => SplashScreen(),
   AppRoute.register.path: (context) => RegistrationScreen(),
   AppRoute.chatScreen.path: (context) => ChatScreen(currentUserId: currentUserId, receiverId: receiverId),
+  AppRoute.chatProfileScreen.path: (context) => ChatProfileScreen(),
   AppRoute.profileScreen.path: (context) => ProfileScreen(),
 };
 

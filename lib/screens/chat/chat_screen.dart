@@ -1,4 +1,6 @@
+import 'package:demo_messenger/providers/theme_provider.dart';
 import 'package:demo_messenger/utils/constants.dart';
+import 'package:demo_messenger/utils/routes.dart';
 import 'package:demo_messenger/widgets/message_widget.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -43,51 +45,51 @@ class _ChatScreenState extends State<ChatScreen> {
         _messageController.clear();
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Failed to send message: $e')),
+          SnackBar(content: Text('${Constants.Failed_message} $e')),
         );
       }
     }
   }
   String icon ="";
-
   // Define the list of menu items with names and icons
   final List<Map<String, dynamic>> uploadOptions = [
     {
-      'name': 'Camera',
-      'icon': 'assets/icons/camera.svg',
+      Constants.nameTitle : Constants.CameraTitle,
+      Constants.iconTitle : Constants.camera,
     },
     {
-      'name': 'Record',
-      'icon': "assets/icons/Record.svg",
+      Constants.nameTitle : Constants.RecordTitle,
+      Constants.iconTitle : Constants.Record,
     },
     {
-      'name': 'Contact',
-      'icon': "assets/icons/Contact.svg",
+      Constants.nameTitle : Constants.ContactTitle,
+      Constants.iconTitle : Constants.Contact,
     },
     {
-      'name': 'Gallery',
-      'icon': "assets/icons/Gallery.svg",
+      Constants.nameTitle : Constants.GalleryTitle,
+      Constants.iconTitle : Constants.Gallery,
     },
     {
-      'name': 'My Location',
-      'icon': "assets/icons/location.svg",
+      Constants.nameTitle : Constants.My_LocationTitle,
+      Constants.iconTitle : Constants.location,
     },
     {
-      'name': 'Document',
-      'icon': "assets/icons/doc.svg",
+      Constants.nameTitle : Constants.DocumentTitle,
+      Constants.iconTitle : Constants.doc,
     },
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CustomColors.getColor(context, AppColor.chatThemeColor),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: CustomColors.getColor(context, AppColor.chatThemeColor),
         scrolledUnderElevation: 0,
         leadingWidth: 30,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
+          onPressed: () => navigateTo(context, AppRoute.home)
         ),
         title: Row(
           mainAxisSize: MainAxisSize.max,
@@ -119,23 +121,25 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
             ),
             IconButton(
-              icon: Image.asset("assets/icons/Videocamera.png", width: 35, height: 35),
+              icon: Image.asset("assets/icons/Videocamera.png", width: 35, height: 35, color: CustomColors.getColor(context, AppColor.iconColor),),
               onPressed: () {
                 // Add video call functionality
               },
             ),
             IconButton(
-              icon: Image.asset("assets/icons/phone.png", width: 35, height: 35),
+              icon: Image.asset("assets/icons/phone.png", width: 35, height: 35, color: CustomColors.getColor(context, AppColor.iconColor)),
               onPressed: () {
                 // Add voice call functionality
               },
             ),
-            IconButton(
-              icon: const Icon(Icons.more_horiz),
-              onPressed: () {
-                // Add more options functionality
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(context, AppRoute.chatProfileScreen.path);
               },
-            ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: SvgPicture.asset("assets/icons/Vector.svg", color: CustomColors.getColor(context, AppColor.iconColor),),
+                ))
           ],
         ),
       ),
@@ -147,7 +151,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 FocusScope.of(context).unfocus();
               },
               child: Container(
-                color: const Color(0xFFD0D1DB),
+                color: CustomColors.getColor(context, AppColor.chatBackGroundColor),
                 child: StreamBuilder(
                   stream: _database
                       .child('users/${widget.currentUserId}/chats/${widget.receiverId}/messages')
@@ -192,7 +196,18 @@ class _ChatScreenState extends State<ChatScreen> {
               child: Row(
                 children: [
                   PopupMenuButton<String>(
-                    icon: const Icon(Icons.add, color: Colors.blue, size: 35),
+                    icon: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.grey.withOpacity(0.1), // Background color for the inside area (adjust opacity or color as needed)
+                        borderRadius: BorderRadius.circular(50), // Circular border for a round shape
+                      ),
+                      padding: const EdgeInsets.all(8), // Padding to ensure the icon fits nicely inside the circle
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.blue,
+                        size: 35,
+                      ),
+                    ),
                     onSelected: (String value) {
                       // Handle selection
                     },
@@ -281,12 +296,16 @@ class _ChatScreenState extends State<ChatScreen> {
                       ),
                     ),
                   ),
-                  IconButton(
-                    icon: Image.asset("assets/icons/ButtonSend.png", width: 55, height: 55),
-                    onPressed: () async {
-                      await _sendMessage();
-                      setState(() {}); // Refresh UI to reflect new message
-                    },
+                  Container(
+                    height: 70,
+                    child:
+                      IconButton(
+                        icon: Image.asset("assets/icons/ButtonSend.png", width: 55, height: 55),
+                        onPressed: () async {
+                          await _sendMessage();
+                          setState(() {}); // Refresh UI to reflect new message
+                        },
+                      ),
                   ),
                 ],
               ),

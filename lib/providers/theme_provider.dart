@@ -9,6 +9,9 @@ enum AppColor {
   success,
   error,
   warning,
+  chatThemeColor,
+  iconColor,
+  chatBackGroundColor,
 }
 
 // Custom colors accessor
@@ -17,16 +20,22 @@ class CustomColors {
   const CustomColors._();
   // Custom colors for light theme
   static const _lightCustomColors = {
-    AppColor.success: Color(0xFF28A745), // Green for success
-    AppColor.error: Color(0xFFDC3545),   // Red for error
-    AppColor.warning: Color(0xFFFFC107), // Yellow for warning
+    AppColor.success: Color(0xFF28A745),
+    AppColor.error: Color(0xFFDC3545),
+    AppColor.warning: Color(0xFFFFC107),
+    AppColor.chatThemeColor :Colors.white,
+    AppColor.iconColor : Color(0xFFFF292929),
+    AppColor.chatBackGroundColor :Color(0xFFFFF0F0F3)
   };
 
   // Custom colors for dark theme
   static const _darkCustomColors = {
-    AppColor.success: Color(0xFF34C759), // Brighter green for dark mode
-    AppColor.error: Color(0xFFFF453A),   // Brighter red for dark mode
-    AppColor.warning: Color(0xFFFF9500), // Brighter yellow for dark mode
+    AppColor.success: Color(0xFF34C759),
+    AppColor.error: Color(0xFFFF453A),
+    AppColor.warning: Color(0xFFFF9500),
+    AppColor.chatThemeColor : Color(0xFFFF292929),
+    AppColor.iconColor : Colors.white,
+    AppColor.chatBackGroundColor :Color(0xFFFF2C2D3A)
   };
 
   // Method to get custom color based on theme and enum
@@ -62,10 +71,13 @@ class AppThemes {
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),
-      bodyMedium: TextStyle(color: Colors.black54, fontSize: 14),
+      bodyMedium: TextStyle(
+          color: Color(0xFF2C2D3A),
+          fontSize: 18,
+      ),
       titleLarge: TextStyle(
         color: Colors.black,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
     ),
@@ -100,10 +112,12 @@ class AppThemes {
         fontSize: 16,
         fontWeight: FontWeight.bold,
       ),
-      bodyMedium: TextStyle(color: Colors.white54, fontSize: 14),
+      bodyMedium: TextStyle(
+          color: Color(0xFFF0F0F3),
+          fontSize: 18),
       titleLarge: TextStyle(
-        color: Colors.white,
-        fontSize: 18,
+        color: Color(0xFFF0F0F3),
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
     ),

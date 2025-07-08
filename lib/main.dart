@@ -1,6 +1,4 @@
 import 'package:demo_messenger/providers/theme_provider.dart';
-import 'package:demo_messenger/screens/chat/chat_screen.dart';
-import 'package:demo_messenger/screens/splash/splash_screen.dart';
 import 'package:demo_messenger/utils/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
