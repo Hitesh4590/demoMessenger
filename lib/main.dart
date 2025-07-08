@@ -33,7 +33,7 @@ class MyApp extends ConsumerWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: themeMode,
-      initialRoute: AppRoute.chatScreen.path,
+      initialRoute: AppRoute.home.path,
       routes: appRoutes,
     );
   }

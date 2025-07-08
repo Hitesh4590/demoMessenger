@@ -28,8 +28,8 @@ class DisplayText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
+      margin: const EdgeInsets.only(bottom: 2),
+      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -48,7 +48,7 @@ class DisplayText extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                const SizedBox(height: 4),
+                // const SizedBox(height: 2),
                 Text(
                   value,
                   style: const TextStyle(
@@ -64,8 +64,8 @@ class DisplayText extends StatelessWidget {
             GestureDetector(
               onTap: () => _copyToClipboard(context),
               child: Container(
-                width: 32,
-                height: 32,
+                width: 30,
+                height: 30,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),

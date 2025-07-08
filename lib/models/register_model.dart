@@ -32,4 +32,6 @@ class UserModel {
       profileImageUrl: profileImageUrl ?? this.profileImageUrl,
     );
   }
+
+
 }
