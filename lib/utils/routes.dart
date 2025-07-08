@@ -21,7 +21,7 @@ enum AppRoute {
   splashScreen('/splash'),
   register('/register'),
   chatScreen('/chatScreen'),
-  chatProfileScreen('/chatProfileScreen');
+  chatProfileScreen('/chatProfileScreen'),
   profileScreen('/profile');
 
   final String path;

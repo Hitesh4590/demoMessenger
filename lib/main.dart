@@ -31,7 +31,7 @@ class MyApp extends ConsumerWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       themeMode: themeMode,
-      initialRoute: AppRoute.login.path,
+      initialRoute: AppRoute.splashScreen.path,
       routes: appRoutes,
     );
   }
