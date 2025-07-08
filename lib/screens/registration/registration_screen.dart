@@ -1,3 +1,4 @@
+import 'package:demo_messenger/screens/profile/profile_screen.dart';
 import 'package:demo_messenger/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:demo_messenger/widgets/custom_text_form.dart';
