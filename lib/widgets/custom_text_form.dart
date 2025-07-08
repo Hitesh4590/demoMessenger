@@ -56,45 +56,55 @@ class CustomTextForm extends StatelessWidget {
               // Call onSubmitted when Next/Done is pressed
               decoration: InputDecoration(
                 labelText: labelText,
-                labelStyle: TextStyle(
-                  color: theme.primaryColor, // Set label text color
-                ),
                 hintText: hintText,
-                hintStyle: TextStyle(
-                  color: theme.hintColor, // Set hint text color
-                ),
-                prefixIcon: Icon(icon, color: theme.primaryColor),
+                prefixIcon: Icon(icon, color: Colors.blue.shade700),
                 suffixIcon: obscureText
                     ? IconButton(
-                        icon: Icon(
-                          isObscured ? Icons.visibility : Icons.visibility_off,
-                        ),
-                        onPressed: () {
-                          ref
-                                  .read(
-                                    obscureTextProvider((
-                                      key: key,
-                                      initialObscure: obscureText,
-                                    )).notifier,
-                                  )
-                                  .state =
-                              !isObscured;
-                        },
-                      )
+                  icon: Icon(
+                    isObscured ? Icons.visibility : Icons.visibility_off,
+                    color: Colors.blue.shade700,
+                  ),
+                  onPressed: () {
+                    ref
+                        .read(
+                      obscureTextProvider((
+                      key: key,
+                      initialObscure: obscureText,
+                      )).notifier,
+                    )
+                        .state = !isObscured;
+                  },
+                )
                     : null,
+                labelStyle: TextStyle(
+                  color: Colors.grey.shade600, // Default label color
+                ),
+                floatingLabelStyle: TextStyle(
+                  color: Colors.blue.shade700, // Label color when focused
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(color: theme.primaryColor, width: 1.0),
+                  borderSide: BorderSide(color: Colors.blue.shade200, width: 1),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(color: theme.primaryColor, width: 1.0),
+                  borderSide: BorderSide(color: Colors.blue.shade200, width: 1),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12.0),
-                  borderSide: BorderSide(color: theme.primaryColor, width: 2.0),
+                  borderSide: BorderSide(color: Colors.blue.shade700, width: 2),
                 ),
-                filled: false,
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: Colors.red.shade400, width: 1),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                  borderSide: BorderSide(color: Colors.red.shade400, width: 2),
+                ),
+                filled: true,
+                fillColor: Colors.white,
+                contentPadding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
               ),
               obscureText: obscureText ? isObscured : false,
               keyboardType: keyboardType,

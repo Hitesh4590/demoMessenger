@@ -1,7 +1,9 @@
 import 'package:demo_messenger/screens/chat/chat_screen.dart';
+import 'package:demo_messenger/screens/home_screen.dart';
 import 'package:demo_messenger/screens/login/login_screen.dart';
 import 'package:demo_messenger/screens/login/unlock_view.dart';
 import 'package:demo_messenger/screens/registration/registration_screen.dart';
+import 'package:demo_messenger/screens/settings_screen.dart';
 import 'package:demo_messenger/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,9 +31,9 @@ final String currentUserId = isDevice1 ? user1Id : user2Id;
 final String receiverId = isDevice1 ? user2Id : user1Id;
 // Define named routes for the app
 Map<String, WidgetBuilder> appRoutes = {
-  AppRoute.home.path: (context) => Placeholder(),
+  AppRoute.home.path: (context) => HomeScreen(),
   AppRoute.details.path: (context) => Placeholder(),
-  AppRoute.settings.path: (context) => Placeholder(),
+  AppRoute.settings.path: (context) => SettingsScreen(),
   AppRoute.login.path: (context) => LoginScreen(),
   AppRoute.unlockView.path: (context) => UnlockView(),
   AppRoute.splashScreen.path: (context) => SplashScreen(),
