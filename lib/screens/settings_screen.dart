@@ -37,20 +37,31 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
                 context: context,
                 icon: "assets/icons/darkMode_icon.svg",
                 title: "Dark Mode",
-                options: Transform.scale(
-                  alignment: Alignment.center,
-                  scale: 0.7,
-                  child: SizedBox(
-                    height: 10,
-                    child: Switch.adaptive(
-                      activeColor: Theme.of(context).colorScheme.primary,
-                      inactiveThumbColor: Theme.of(context).colorScheme.onSurfaceVariant,
-                      inactiveTrackColor: Theme.of(context).colorScheme.surfaceVariant,
-                      value: isDarkMode,
-                      onChanged: (value) {
-                        ref.read(themeModeProvider.notifier).state =
-                        value ? ThemeMode.dark : ThemeMode.light;
-                      },
+                options: InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: () {
+                    ref.read(themeModeProvider.notifier).state =
+                    isDarkMode ? ThemeMode.light : ThemeMode.dark;
+                  },
+                  borderRadius: BorderRadius.circular(8), // Adds rounded ripple effect
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                    child: Transform.scale(
+                      alignment: Alignment.center,
+                      scale: 0.7,
+                      child: SizedBox(
+                        height: 10,
+                        child: Switch.adaptive(
+                          activeColor: Theme.of(context).colorScheme.primary,
+                          inactiveThumbColor: Theme.of(context).colorScheme.onSurfaceVariant,
+                          inactiveTrackColor: Theme.of(context).colorScheme.surfaceVariant,
+                          value: isDarkMode,
+                          onChanged: (value) {
+                            ref.read(themeModeProvider.notifier).state =
+                            value ? ThemeMode.dark : ThemeMode.light;
+                          },
+                        ),
+                      ),
                     ),
                   ),
                 ),
